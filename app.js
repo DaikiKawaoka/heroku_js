@@ -14,12 +14,18 @@ app.get('/', function (req, res) {
   const data = iconv.decode(rawData, 'ms932');
   // csvファイルをパース
   const records = parse(data);
+  let error_flag = true;
   // 結果の表示
   for (const record of records) {
     if(record[2] == code){
+      error_flag = false;
       console.log(record);
       res.jsonp(record[6]+record[7]+record[8]);
     }
+  }
+  if(error_flag){
+    console.log("郵便番号が正しくありません。");
+    res.jsonp("郵便番号が正しくありません。");
   }
 })
 
