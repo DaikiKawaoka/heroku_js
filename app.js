@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 app.use(express.json())
+const PORT = process.env.PORT || 5000
 
 const fs = require('fs');
 const iconv = require('iconv-lite');
@@ -28,4 +29,4 @@ app.get('/', function (req, res) {
   }
 })
 
-app.listen(5000, () => console.log('App listening on port 5000!'))
+app.listen(PORT, () => console.log(`App listening on port ${PORT}!`))
