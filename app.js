@@ -12,7 +12,6 @@ app.get('/', function (req, res) {
   // csvファイルの内容を読み込み
   const rawData = fs.readFileSync('38EHIME.CSV');
   const data = iconv.decode(rawData, 'ms932');
-  // csvファイルをパース
   const records = parse(data);
   let error_flag = true;
   // 結果の表示
